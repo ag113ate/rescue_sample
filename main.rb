@@ -1,9 +1,22 @@
-begin
-  1 /0
-rescue => e
-  puts("問題発生")
-  p e.class
-  p e.message
-  p e.backtrace
+class ExceptionTest
+  def test
+    begin
+      1 / 0
+    
+    rescue ZeroDivisionError => ex
+      puts "ZeroDivisionError"
+      p ex
+    rescue ArgumentError => ex
+      puts "ArgumentError"
+      p ex
+    rescue StandardError => ex
+      puts "StandardError"
+      p ex
+    end
+  end
 end
-puts("ok")
+
+obj = ExceptionTest.new
+
+obj.test
+
